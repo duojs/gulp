@@ -1,13 +1,18 @@
 
 # duo-gulp
 
-  Use gulp plugins in duo without any extra work.
+  Use gulp plugins in Duo without any extra work.
 
 ## Example
 
 ```js
 var gulp = require('duo-gulp');
 var duo = Duo(root).entry(entry);
+
+// gulp plugins
+var coffee = require('gulp-coffee');
+var uncss = require('gulp-uncss');
+var less = require('gulp-less');
 
 // plugins
 duo.use(gulp('*.coffee', coffee)());
