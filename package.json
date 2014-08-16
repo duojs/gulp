@@ -1,0 +1,26 @@
+{
+  "name": "duo-gulp",
+  "version": "0.0.1",
+  "description": "Use gulp plugins in duo",
+  "keywords": [],
+  "author": "Matthew Mueller <mattmuelle@gmail.com>",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/MatthewMueller/duo-gulp.git"
+  },
+  "dependencies": {
+    "file-pipe": "0.0.3",
+    "minimatch": "~1.0.0"
+  },
+  "devDependencies": {
+    "mocha": "*",
+    "duo": "~0.7.1",
+    "co-mocha": "0.0.4",
+    "gnode": "0.0.8",
+    "gulp-coffee": "~2.1.1",
+    "gulp-less": "~1.3.3",
+    "gulp-uncss": "~0.4.5",
+    "rimraf": "~2.2.8"
+  },
+  "main": "index"
+}

@@ -1,0 +1,19 @@
+body {
+  background: blue;
+}
+
+header {
+  font-size: 200%;
+}
+
+h2 {
+  background: green;
+}
+
+.title {
+  color: green;
+}
+
+section {
+  font-weight: bold;
+}

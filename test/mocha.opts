@@ -1,0 +1,4 @@
+--harmony-generators
+--require gnode
+--require co-mocha
+--reporter spec
