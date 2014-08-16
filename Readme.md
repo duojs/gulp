@@ -1,9 +1,38 @@
 
 # duo-gulp
 
-  Use gulp plugins in duo
+  Use gulp plugins in duo without any extra work.
 
-## License 
+## Example
+
+```js
+var gulp = require('duo-gulp');
+var duo = Duo(root).entry(entry);
+
+// plugins
+duo.use(gulp('*.coffee', coffee)());
+duo.use(gulp('*.less', less)());
+duo.use(gulp('*.css', uncss)(opts));
+
+duo.run(fn);
+```
+
+## API
+
+### gulp([glob], plugin)([opts])
+
+Wrap the gulp `plugin`. Optionally filter plugins using `glob`.
+
+The function returns another function that you can use to pass options to the gulp plugin.
+
+## Test
+
+```
+npm install
+make test
+```
+
+## License
 
 (The MIT License)
 
