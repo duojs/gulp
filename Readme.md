@@ -1,5 +1,5 @@
 
-# gulp
+# duo-gulp
 
   Use gulp plugins in Duo without any extra work.
 
