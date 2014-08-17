@@ -1,7 +1,7 @@
 
 # duo-gulp
 
-  Use gulp plugins in Duo without any extra work.
+  Use [gulp plugins](http://gulpjs.com/plugins/) in Duo without any extra work.
 
 ## Installation
 
