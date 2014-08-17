@@ -1,7 +1,13 @@
 
-# duo-gulp
+# gulp
 
   Use gulp plugins in Duo without any extra work.
+
+## Installation
+
+```bash
+npm install duo-gulp
+```
 
 ## Example
 
