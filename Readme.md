@@ -23,16 +23,16 @@ var less = require('gulp-less');
 // plugins
 duo.use(gulp('*.coffee', coffee)());
 duo.use(gulp('*.less', less)());
-duo.use(gulp('*.css', uncss)(opts));
+duo.use(gulp(['*.css', 'vendor/*.css'], uncss)(opts));
 
 duo.run(fn);
 ```
 
 ## API
 
-### gulp([glob], plugin)([opts])
+### gulp([patterns], plugin)([opts])
 
-Wrap the gulp `plugin`. Optionally filter plugins using `glob`.
+Wrap the gulp `plugin`. Optionally filter plugins using `patterns`.
 
 The function returns another function that you can use to pass options to the gulp plugin.
 

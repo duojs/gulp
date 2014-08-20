@@ -2,7 +2,7 @@
  * Module dependencies
  */
 
-var minimatch = require('minimatch');
+var multimatch = require('multimatch');
 var filepipe = require('file-pipe');
 var extname = require('path').extname;
 var slice = [].slice;
@@ -32,7 +32,7 @@ function Gulp(glob, fn) {
 
     // duo plugin function
     return function gulp(file, entry, done) {
-      if (glob && !minimatch(file.id, glob)) return done();
+      if (glob && !multimatch(file.id, glob).length) return done();
       var instance = fn.apply(fn, args);
 
       // initialize the file-pipe
