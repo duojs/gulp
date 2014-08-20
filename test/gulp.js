@@ -61,7 +61,7 @@ describe('duo-gulp', function() {
   describe('gulp(glob, plugin)', function() {
     it('should filter plugins based on `glob`', function *() {
       var duo = create('less', 'index.less');
-      duo.use(gulp('*.coffee', coffee)());
+      duo.use(gulp(['*', '!*.less'], coffee)());
       duo.use(gulp('*.less', less)());
       var css = yield duo.run();
       assert(css == read('less/build.css'));
