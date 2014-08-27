@@ -6,7 +6,7 @@
   "author": "Matthew Mueller <mattmuelle@gmail.com>",
   "repository": {
     "type": "git",
-    "url": "git://github.com/MatthewMueller/duo-gulp.git"
+    "url": "git://github.com/duojs/gulp.git"
   },
   "dependencies": {
     "file-pipe": "0.0.3",
