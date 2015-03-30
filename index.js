@@ -3,7 +3,8 @@
  */
 
 var multimatch = require('multimatch');
-var filepipe = require('file-pipe');
+var fakefs = require('vinyl-fs-fake');
+var through = require('through2');
 var extname = require('path').extname;
 var slice = [].slice;
 
@@ -35,14 +36,20 @@ function Gulp(glob, fn) {
       if (glob && !multimatch(file.id, glob).length) return done();
       var instance = fn.apply(fn, args);
 
-      // initialize the file-pipe
-      filepipe(file.path)
+      // initialize the stream
+      fakefs.src({
+        path: "file." + file.type,
+        contents: file.src
+      })
         .pipe(instance)
-        .run(function(err, src, vinyl) {
-          if (err) return done(err);
+        .pipe(through.obj(function(vinyl, enc, callback) {
           file.type = extension(vinyl.path);
-          file.src = src;
+          file.src = vinyl.contents.toString();
           done();
+          callback();
+        }))
+        .on("error", function(err) {
+          done(err);
         });
     }
   }

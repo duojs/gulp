@@ -33,18 +33,18 @@ describe('duo-gulp', function() {
     it('should work with gulp-coffee', function *() {
       var duo = create('coffee', 'index.coffee');
       duo.use(gulp(coffee)());
-      var js = yield duo.run();
+      var js = (yield duo.run()).code;
       var ctx = evaluate(js).main;
-      assert('a' == ctx.a);
-      assert('b' == ctx.b);
+      assert.equal('a', ctx.a);
+      assert.equal('b', ctx.b);
     });
 
     it('should work with gulp-less', function *() {
       var duo = create('less', 'index.less');
       duo.use(gulp(less)());
-      var css = yield duo.run();
-      assert(css == read('less/build.css'));
-    })
+      var css = (yield duo.run()).code;
+      assert.equal(css, read('less/build.css'));
+    });
 
     it('should work with options', function *() {
       var duo = create('uncss', 'index.css');
@@ -53,19 +53,19 @@ describe('duo-gulp', function() {
         html: '<html><head></head><body><header class="title">hi!</header></body>'
       }));
 
-      var css = yield duo.run();
-      assert(css == read('uncss/build.css'));
-    })
-  })
+      var css = (yield duo.run()).code;
+      assert.equal(css, read('uncss/build.css'));
+    });
+  });
 
   describe('gulp(glob, plugin)', function() {
     it('should filter plugins based on `glob`', function *() {
       var duo = create('less', 'index.less');
       duo.use(gulp(['*', '!*.less'], coffee)());
       duo.use(gulp('*.less', less)());
-      var css = yield duo.run();
-      assert(css == read('less/build.css'));
-    })
+      var css = (yield duo.run()).code;
+      assert.equal(css, read('less/build.css'));
+    });
   });
 
 });
@@ -105,7 +105,7 @@ function cleanup(){
 
 function read(file) {
   file = path(file);
-  return readfile(file);
+  return readfile(file, "utf8");
 }
 
 /**
@@ -132,7 +132,7 @@ function create(root, entry) {
  */
 
 function evaluate(js, ctx){
-  var ctx = ctx || { window: {}, document: {} };
+  ctx = ctx || { window: {}, document: {} };
   vm.runInNewContext('main =' + js + '(1)', ctx, 'main.vm');
   vm.runInNewContext('require =' + js + '', ctx, 'require.vm');
   return ctx;
